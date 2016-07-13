@@ -15,9 +15,12 @@
 		var context = canvas.getContext('2d');
 
 		//Dados da Bola
-		var x= 20;
+		var x= 220;
 		var y= 100;
 		var raio = 5;
+
+		//momento inicial
+		var anterior = new Date().getTime();
 
 		//iniciar a animacao
 		requestAnimationFrame(mexerBola);
@@ -25,6 +28,9 @@
 		//funcao de animacao
 		function mexerBola(){
 			//Aqui uma bolinha se deslocará
+			var agora = new Date().getTime
+			//Diferença
+			var decorrido = agora - anterior;
 
 			//limpar o canvas
 			context.clearRect(0, 0, canvas.width, canvas.height);
@@ -34,10 +40,12 @@
 			context.arc(x, y , raio, 0, Math.PI*2);
 			context.fill();
 
-			//deslocar 20px para a direita
+			//deslocar a bola pelo tempo			
+			var velocidade = 1;
+			x += velocidade * decorrido / 1000;
 
-			
-			x+= 2;
+			//guardamos o instante para o proximo ciclo
+			anterior = agora;
 
 			//Chamar o proximo ciclo de animação
 			requestAnimationFrame(mexerBola);
